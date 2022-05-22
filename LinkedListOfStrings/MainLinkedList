@@ -1,0 +1,21 @@
+
+import java.util.Random;
+
+
+public class MainLinkedList {
+    public static void main(String[] args) {
+        LinkedListOfString lista = new LinkedListOfString();
+        
+        lista.addIncreasingOrder("abc");
+        lista.addIncreasingOrder(1);
+        lista.addIncreasingOrder(11);
+        lista.addIncreasingOrder(-1);
+        
+        lista.addIncreasingOrder("primeira");  
+        
+        System.out.println(lista);
+
+
+        
+    }
+}
