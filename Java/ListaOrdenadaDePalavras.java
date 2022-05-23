@@ -15,8 +15,11 @@ public class ListaOrdenadaDePalavras {
             this.element = element;
             next = null;
             listaOcorrencias = new ListaDeOcorrencias();//cria uma lista p cada palavra(elemento)
-            listaOcorrencias.add(pagina);
-            System.out.println(listaOcorrencias);
+                
+                listaOcorrencias.add(pagina);
+                System.out.println(listaOcorrencias);
+            
+            
             
             
             // System.out.println(listaOcorrencias.size());

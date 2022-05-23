@@ -32,6 +32,10 @@ do{
     System.out.println("4. Pesquisar palavras (palavra e suas localizações(paginas));");
     System.out.println("5. Listar todo o índice remissivo;");
     System.out.println("6. Encerrar o programa.");
+
+    int maior = 0;
+    String campeao="kk";
+    int quantia = 0;
     
     int palavraCount = 0;//contagem de palavras
     int StopWordCount = 0;//contagem de palavras StopWord
@@ -87,24 +91,49 @@ do{
                         break;
                     } 
                 } while (true);//pesquisa se é StopWord a palavra maybe
-                if (palavra!= " ")
+                if (palavra!= ""&palavra!= " ")
                 {
-                    if (selecionado == 1)
+                    if (palavras.contains(palavra))
                     {
-                        palavras.addIncreasingOrder(palavra);
+                            palavras.indexOf(palavra);
+                
                     }
-                    else if (selecionado == 5)
+                    else
                     {
-                        palavras.add(palavra);
+                        if (selecionado == 1)
+                        {
+                            palavras.addIncreasingOrder(palavra);
+                        }
+                        else if (selecionado == 5)
+                        {
+                            palavras.add(palavra);
+                        }
+                        else
+                        {
+                            palavras.add(palavra);
+                        }
+                   
                     }
                 }
+                
 
             }
-
+            quantia = palavras.countOccurrences(palavra);
+            if (quantia > maior)
+            {
+                System.out.println(palavras.indexOf(palavra));
+                
+                maior = quantia;
+                campeao = palavra;
+                System.out.println("campeao: "+campeao);
+                System.out.println("repetiçoes: "+maior);
+            
+            }
          } while (true);
-         
+        
 
     } while (true);
+    
    
     if (selecionado  == 1)
     {
@@ -117,43 +146,7 @@ do{
         System.out.println("palavra total: "+palavraCount+"StopWord total: "+StopWordCount+"porcentagem "+porcent+"%");
     }
     else if (selecionado  == 3)
-    {   int maior = 0;
-        int bah = 0;
-        String campeao="kk";
-        int quantia = 0;
-        arquivo.open("alice.txt"); /////le o texto e faz
-        
-        do{
-            l = arquivo.getNextLine();
-            if (l==null) // acabou o arquivo?
-            break;
-
-            linha.setLine(l); // define o texto da linha
-
-            do{
-                String word =linha.getNextWord();
-                bah++;
-                if (word == null)// acabou a linha
-                {
-                    break;//////////////fazer metodo para criar lista com a palavra
-                }
-                else if (word!= null)
-                {
-                    quantia = palavras.countOccurrences(word);
-                    if (quantia > maior)
-                    {
-                        maior = quantia;
-                        campeao = word;
-                        System.out.println("campeao: "+word);
-                        System.out.println("repetiçoes: "+maior);
-                        System.out.println("bah: "+bah);
-                    }
-                }
-                
-
-            }while(true);
-
-        }while(true);
+    {   
         System.out.println(campeao);
     }
     else if (selecionado  == 4)
