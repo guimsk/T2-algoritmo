@@ -29,13 +29,9 @@ do{
     System.out.println("1. Exibir todo o índice remissivo(em ordem alfabética);");
     System.out.println("2. Exibir o percentual de stopwords do texto;");
     System.out.println("3. Encontrar a palavra mais frequente, isto é, com maior número de ocorrências;");
-    System.out.println("4. Pesquisar palavras (palavra e suas localizaço2es(paginas));");
+    System.out.println("4. Pesquisar palavras (palavra e suas localizaçoes(paginas));");
     System.out.println("5. Listar todo o índice remissivo;");
     System.out.println("6. Encerrar o programa.");
-
-    int maior = 0;
-    String campeao="kk";
-    int quantia = 0;
 
     String  busca = "";
     
@@ -110,7 +106,7 @@ do{
                 {
                     if (busca.equalsIgnoreCase(palavra))
                     {
-                    palavras.add(palavra);
+                        palavras.add(palavra);
                     }
                          
                 }
@@ -129,17 +125,18 @@ do{
     {
         System.out.println(palavras.toString());
         //chama getnode(objeto) para conseguir o conteudo de dentro do objeto, ou adicionar, manipular no geral por meio de nodo palavra.
-       
         palavras.clear();
     }
     else if (selecionado  == 2)
     {
         float porcent = StopWordCount*100/palavraCount;
-        System.out.println("Palavra total: "+palavraCount+"; StopWord total: "+StopWordCount+"; Porcentagem: "+porcent+"%");
+        System.out.println("Total de palavras: "+palavraCount+"; StopWord total: "+StopWordCount+"; Porcentagem de StopWord: "+porcent+"%");
+        palavras.clear();
     }
     else if (selecionado  == 3)
     {   
-        System.out.println(campeao);
+        palavras.topCount();
+        palavras.clear();
     }
     else if (selecionado  == 4)
     {

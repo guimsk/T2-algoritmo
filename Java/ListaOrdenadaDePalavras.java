@@ -9,25 +9,30 @@ public class ListaOrdenadaDePalavras {
     private class Palavra {
         public String element;
         public Palavra next;
-        public int pagina = Main.nPagina; 
+        public int pagina = Main.nPagina; //traz o numero da pagina para a classe
+        public int quantidade;//contagem de cada palavra
         public ListaDeOcorrencias listaOcorrencias;   
         public Palavra(String element) {
             this.element = element;
             next = null;
             listaOcorrencias = new ListaDeOcorrencias();//cria uma lista p cada palavra(elemento)
-            if (contains(element) == true)
+
+            if (contains(element) == true)//se tem na lista
             {
-               Palavra aux = getRef(element);
-               if (aux.listaOcorrencias.contains(pagina)== false)
-               {
+                Palavra aux = getRef(element); //pega referencia para o nodo da palavra
+                aux.quantidade++;//usa o nodo da palavra para add quantidade total
+                if (aux.listaOcorrencias.contains(pagina)== false)//caso a pagina nao foi adicionada, adiciona
+                {
                     aux.listaOcorrencias.add(pagina);
-               }
+                }
            }
-           else{
-            if (listaOcorrencias.contains(pagina)== false)
-               {
+           else
+           {
+                quantidade++;//se nao existir na lista, o nodo atual é usado para cópias futuras
+                if (listaOcorrencias.contains(pagina)== false)
+                {
                     listaOcorrencias.add(pagina);
-               }
+                }
            }
             
             
@@ -88,6 +93,29 @@ public class ListaOrdenadaDePalavras {
 
         
         // demais metodos necessarios
+        public void topCount()
+    {
+        int top =0;
+        String campeao = "k";
+        
+        Palavra aux = head;
+        for(int i=0; i<count; i++) {
+            if (aux.element.equalsIgnoreCase(""))
+            //caso for "" ignora, devido a substituição dos StopWord
+            {
+
+            }
+            else if (aux.quantidade>top)
+            //ve qual é a maior quantidade e atualiza campeao, e sua quantidade
+            {
+                campeao = aux.element;
+                top = aux.quantidade;
+            }
+            aux = aux.next;
+        }
+        System.out.println("Palavra: "+campeao+"; Repetiçoes: "+top);
+
+    }
         /**
      * Retorna true se a lista nao contem elementos.
      * @return true se a lista nao contem elementos
@@ -310,43 +338,6 @@ public class ListaOrdenadaDePalavras {
         }
         return false;
     }
-
-
-    /**
-     * Retorna um arranjo que contem os elementos da lista original entre 
-     * fromIndex (inclusivo) e toIndex (exclusivo).
-     * @param fromIndex posicao a partir da qual os elementos serao inseridos no
-     * arranjo a ser retornado
-     * @param toIndex indica a posicao final dos elementos que devem ser inseridos
-     * @return Um arranjo com um subconjunto dos elementos da lista.
-     * @throws IndexOutOfBoundsException se (fromIndex < 0 || toIndex > size())
-     * @throws IllegalArgumentException se (fromIndex >= toIndex)
-     */   
-    // public int[] subList (int fromIndex , int toIndex) {
-    //     // Primeiro verifica se os indices sao validos
-    //     if (fromIndex < 0 || toIndex > size())
-    //         throw new IndexOutOfBoundsException();
-    //     if (fromIndex >= toIndex)
-    //         throw new IllegalArgumentException();
-        
-    //     // Cria o arranjo
-    //     Palavra aux = head;
-    //     int contagem = 0;
-    //     int Integer[] = new int [count];
-    //     for (int i = 0; i < count; i++) {
-    //         if (i>=fromIndex&i<=toIndex) {
-    //             Integer[contagem] = listaOcorrencias.get();
-    //         }
-    //         aux = aux.next;
-    //     }
-    //     return Integer;
-    //     // "Caminha" ate a posicao fromIndex
-        
-    //     // Copia os elementos de fromIndex a toIndex para o arranjo
-        
-    //     // Retorna o arranjo
-    //     return null;
-    // }
 
     public void addIncreasingOrder(String element)
     {

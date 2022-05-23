@@ -15,21 +15,20 @@
     public void setLine(String lin) {
         linha = lin.toLowerCase();//faze tudo letra minuscula para facilitar ordenação
         linha = linha.replaceAll("\\t"," "); // substitui tab por espaco em branco
-        linha = linha.replaceAll(",",""); // para remover vírgulas
-        linha = linha.replaceAll("\\.",""); // para remover ponto final
-        linha = linha.replaceAll("\\?",""); // para remover ponto interrogacao
-        linha = linha.replaceAll("\\!",""); // para remover ponto exclamacao
-        linha = linha.replaceAll("\\!","");
-        linha = linha.replaceAll("\"","");
-        linha = linha.replaceAll("\\'","");
-        linha = linha.replaceAll("\\)","");
-        linha = linha.replaceAll("\\]","");
-        linha = linha.replaceAll("\\(","");
-        linha = linha.replaceAll("\\[","");
-        linha = linha.replaceAll("\\--"," ");
-        linha = linha.replaceAll("\\-","");
-        linha = linha.replaceAll("\\;","");
-        linha = linha.replaceAll("\\:","");
+        linha = linha.replaceAll(","," "); // para remover vírgulas
+        linha = linha.replaceAll("\\."," "); // para remover ponto final
+        linha = linha.replaceAll("\\?"," "); // para remover ponto interrogacao
+        linha = linha.replaceAll("\\!"," "); // para remover ponto exclamacao
+        linha = linha.replaceAll("\\!"," ");
+        linha = linha.replaceAll("\""," ");
+        linha = linha.replaceAll("\\'"," ");
+        linha = linha.replaceAll("\\)"," ");
+        linha = linha.replaceAll("\\]"," ");
+        linha = linha.replaceAll("\\("," ");
+        linha = linha.replaceAll("\\["," ");
+        linha = linha.replaceAll("\\-"," ");
+        linha = linha.replaceAll("\\;"," ");
+        linha = linha.replaceAll("\\:"," ");
 
         
         palavras = linha.split(" "); // divide a string pelo espaco em branco 
