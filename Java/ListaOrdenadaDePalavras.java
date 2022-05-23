@@ -15,7 +15,7 @@ public class ListaOrdenadaDePalavras {
             this.element = element;
             next = null;
             listaOcorrencias = new ListaDeOcorrencias();//cria uma lista p cada palavra(elemento)
-            if (contains(element))
+            if (contains(element) == true)
             {
                Palavra aux = getRef(element);
                if (aux.listaOcorrencias.contains(pagina)== false)
@@ -24,7 +24,10 @@ public class ListaOrdenadaDePalavras {
                }
            }
            else{
-            listaOcorrencias.add(pagina);
+            if (listaOcorrencias.contains(pagina)== false)
+               {
+                    listaOcorrencias.add(pagina);
+               }
            }
             
             
@@ -49,8 +52,13 @@ public class ListaOrdenadaDePalavras {
             count = 0;
         }
 	// metodo add para adicionar uma palavra na lista
-    public void add (String element, int pagina)  {
+    public void add (String element)  {
          // O(1)
+         if (contains(element))//so p nn faze nada caso ja tiver elemento
+        {
+            Palavra n = new Palavra(element);
+       }
+       else{
         Palavra n = new Palavra(element);
         if (head == null) {
             head = n;
@@ -59,6 +67,7 @@ public class ListaOrdenadaDePalavras {
         }
         tail = n;
         count++;
+        }
     } 
      
         // metodo toString
@@ -339,12 +348,11 @@ public class ListaOrdenadaDePalavras {
     //     return null;
     // }
 
-    public void addIncreasingOrder(String element, int pagina)
+    public void addIncreasingOrder(String element)
     {
-        if (contains(element))
+        if (contains(element))//so p nn faze nada caso ja tiver elemento
         {
-           Palavra aux = getRef(element);
-           aux.listaOcorrencias.add(pagina);
+            Palavra n = new Palavra(element);
        }
        else{
         int i;

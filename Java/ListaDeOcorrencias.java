@@ -126,7 +126,12 @@ public class ListaDeOcorrencias {
         Node aux = head;
 
         while (aux != null) {
-            if (aux == head)
+           if (head == tail)
+            {
+                s.append(": " +aux.element.toString()+".");
+                aux = aux.next;
+            }
+            else if (aux == head)
             {
                 s.append(": "+aux.element.toString());
                 aux = aux.next;

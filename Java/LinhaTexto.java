@@ -26,6 +26,7 @@
         linha = linha.replaceAll("\\]","");
         linha = linha.replaceAll("\\(","");
         linha = linha.replaceAll("\\[","");
+        linha = linha.replaceAll("\\--"," ");
         linha = linha.replaceAll("\\-","");
         linha = linha.replaceAll("\\;","");
         linha = linha.replaceAll("\\:","");
