@@ -25,7 +25,7 @@ public class Main {
     
 do{
 
-    System.out.println("Escolha açao desejada:");por meio de nodo palavra
+    System.out.println("Escolha açao desejada:");
     System.out.println("1. Exibir todo o índice remissivo(em ordem alfabética);");
     System.out.println("2. Exibir o percentual de stopwords do texto;");
     System.out.println("3. Encontrar a palavra mais frequente, isto é, com maior número de ocorrências;");
@@ -42,7 +42,7 @@ do{
     int  selecionado = keyboard.nextInt();
     int nLinha = 0;
     nPagina =0;
-    String numeros = "";
+
 
     arquivo.open("alice.txt"); /////le o texto e faz
     do  // laco que passa em cada linha do arquivo
@@ -91,44 +91,21 @@ do{
                         break;
                     } 
                 } while (true);//pesquisa se é StopWord a palavra maybe
-                if (palavra!= ""&palavra!= " ")
-                {
-                    if (palavras.contains(palavra))
+                    
+                    if (selecionado == 1)
                     {
-                            palavras.indexOf(palavra);
-                
+                        palavras.addIncreasingOrder(palavra, nPagina);
+                    }
+                    else if (selecionado == 5)
+                    {
+                        palavras.add(palavra, nPagina);
                     }
                     else
                     {
-                        if (selecionado == 1)
-                        {
-                            palavras.addIncreasingOrder(palavra);
-                        }
-                        else if (selecionado == 5)
-                        {
-                            palavras.add(palavra);
-                        }
-                        else
-                        {
-                            palavras.add(palavra);
-                        }
-                   
+                        palavras.add(palavra, nPagina);
                     }
-                }
-                
-
             }
-            quantia = palavras.countOccurrences(palavra);
-            if (quantia > maior)
-            {
-                System.out.println(palavras.indexOf(palavra));
-                
-                maior = quantia;
-                campeao = palavra;
-                System.out.println("campeao: "+campeao);
-                System.out.println("repetiçoes: "+maior);
             
-            }
          } while (true);
         
 
@@ -137,8 +114,9 @@ do{
    
     if (selecionado  == 1)
     {
-        System.out.println(palavras);
+        System.out.println(palavras.toString());
         //chama getnode(objeto) para conseguir o conteudo de dentro do objeto, ou adicionar, manipular no geral por meio de nodo palavra.
+       
         palavras.clear();
     }
     else if (selecionado  == 2)

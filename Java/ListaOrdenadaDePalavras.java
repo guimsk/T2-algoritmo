@@ -9,15 +9,11 @@ public class ListaOrdenadaDePalavras {
     private class Palavra {
         public String element;
         public Palavra next;
-        public int pagina = Main.nPagina; 
         public ListaDeOcorrencias listaOcorrencias;   
         public Palavra(String element) {
             this.element = element;
             next = null;
             listaOcorrencias = new ListaDeOcorrencias();//cria uma lista p cada palavra(elemento)
-                
-                listaOcorrencias.add(pagina);
-                System.out.println(listaOcorrencias);
             
             
             
@@ -41,8 +37,18 @@ public class ListaOrdenadaDePalavras {
             count = 0;
         }
 	// metodo add para adicionar uma palavra na lista
-    public void add (String element)  { // O(1)
+    public void add (String element, int pagina)  {
+        if (contains(element))
+        {
+           Palavra aux = getRef(element);
+           if (aux.listaOcorrencias.contains(pagina)== false)
+           {
+                aux.listaOcorrencias.add(pagina);
+           }
+       }
+       else{ // O(1)
         Palavra n = new Palavra(element);
+        
         if (head == null) {
             head = n;
         } else {
@@ -50,6 +56,7 @@ public class ListaOrdenadaDePalavras {
         }
         tail = n;
         count++;
+    }
     } 
      
         // metodo toString
@@ -60,6 +67,7 @@ public class ListaOrdenadaDePalavras {
     
             while (aux != null) {
                 s.append(aux.element.toString());
+                s.append(aux.listaOcorrencias.toString());
                 s.append("\n");
                 aux = aux.next;
             }
@@ -114,6 +122,7 @@ public class ListaOrdenadaDePalavras {
             c++;
         }
         return (aux.element);
+        
     }
     
     ////////////////////////////////////////////////////////////////
@@ -328,16 +337,24 @@ public class ListaOrdenadaDePalavras {
     //     return null;
     // }
 
-    public void addIncreasingOrder(String element)
+    public void addIncreasingOrder(String element, int pagina)
     {
-      int i;
-      Palavra aux = head;
-      for(i=0; i<count; i++) {
-          if (aux.element.compareTo(element) > 0)
-              break;
-          aux = aux.next;
-      }
-      add(i,element);
+        if (contains(element))
+        {
+           Palavra aux = getRef(element);
+           aux.listaOcorrencias.add(pagina);
+       }
+       else{
+        int i;
+        Palavra aux = head;
+        for(i=0; i<count; i++) 
+        {
+            if (aux.element.compareTo(element) > 0)
+                break;
+            aux = aux.next;
+        }
+           add(i,element);
+       }
     }
 
     public int countOccurrences(String element)
@@ -366,7 +383,7 @@ public class ListaOrdenadaDePalavras {
         return aux;
       }
       // Codigo em Java
-      public Palavra getRef(String element) {
+      public Palavra getRef(String element) {//busca o node
         Palavra aux = head;
               for (int i = 0; i < count; i++) {
                   if (aux.element.equals(element)) {
