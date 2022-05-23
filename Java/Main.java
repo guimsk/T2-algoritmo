@@ -25,7 +25,7 @@ public class Main {
     
 do{
 
-    System.out.println("Escolha açao desejada:");
+    System.out.println("Escolha açao desejada:");por meio de nodo palavra
     System.out.println("1. Exibir todo o índice remissivo(em ordem alfabética);");
     System.out.println("2. Exibir o percentual de stopwords do texto;");
     System.out.println("3. Encontrar a palavra mais frequente, isto é, com maior número de ocorrências;");
@@ -138,6 +138,7 @@ do{
     if (selecionado  == 1)
     {
         System.out.println(palavras);
+        //chama getnode(objeto) para conseguir o conteudo de dentro do objeto, ou adicionar, manipular no geral por meio de nodo palavra.
         palavras.clear();
     }
     else if (selecionado  == 2)
