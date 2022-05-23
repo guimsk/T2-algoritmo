@@ -87,7 +87,7 @@ do{
                     else if  (palavra.equalsIgnoreCase(palavraStop))// obtem a proxima palavra da linha
                     {
                         StopWordCount++;
-                        palavra = " ";//removerStopWord da lista
+                        palavra = "";//removerStopWord da lista
                         break;
                     } 
                 } while (true);//pesquisa se é StopWord a palavra maybe
