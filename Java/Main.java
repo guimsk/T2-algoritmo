@@ -37,8 +37,9 @@ do{
     
     int palavraCount = 0;//contagem de palavras
     int StopWordCount = 0;//contagem de palavras StopWord
-    int  selecionado = keyboard.nextInt();//selecionar qual é a escolha do usuario, o resto depende disso
-    if (selecionado  == 4)
+    String  selecionado = keyboard.next();//selecionar qual é a escolha do usuario, o resto depende disso
+    if (selecionado.equalsIgnoreCase("4"))
+    //caso queira somente uma palavra, especificar qual buscar
     {
         System.out.println("Favor, digite a palavra desejada:");
         busca = keyboard.next();
@@ -94,15 +95,18 @@ do{
 
                 } while (true);//pesquisa se é StopWord a palavra maybe
                     
-                if (selecionado == 1)
+                if (selecionado.equalsIgnoreCase("1")) 
+                //caso queira que as palavras sejam adicionadas ordenadamente
                 {
                     palavras.addIncreasingOrder(palavra);
                 }
-                else if (selecionado == 5)
+                else if (selecionado.equalsIgnoreCase("5"))
+                //caso queira que as palavras mantenham suas posiçoes originais
                 {
                     palavras.add(palavra);
                 }
-                if (selecionado  == 4)
+                if (selecionado.equalsIgnoreCase("4"))
+                //caso queira somente uma palavra
                 {
                     if (busca.equalsIgnoreCase(palavra))
                     {
@@ -111,6 +115,7 @@ do{
                          
                 }
                 else
+                //caso nao importa a ordem, apenas carrega os dados
                 {
                     palavras.add(palavra);
                 }
@@ -121,37 +126,49 @@ do{
     } while (true);
     
    
-    if (selecionado  == 1)
+    if (selecionado.equalsIgnoreCase("1"))
     {
         System.out.println(palavras.toString());
         //chama getnode(objeto) para conseguir o conteudo de dentro do objeto, ou adicionar, manipular no geral por meio de nodo palavra.
         palavras.clear();
     }
-    else if (selecionado  == 2)
+    else if (selecionado.equalsIgnoreCase("2"))
     {
         float porcent = StopWordCount*100/palavraCount;
         System.out.println("Total de palavras: "+palavraCount+"; StopWord total: "+StopWordCount+"; Porcentagem de StopWord: "+porcent+"%");
         palavras.clear();
     }
-    else if (selecionado  == 3)
+    else if (selecionado.equalsIgnoreCase("3"))
     {   
         palavras.topCount();
         palavras.clear();
     }
-    else if (selecionado  == 4)
+    else if (selecionado.equalsIgnoreCase("4"))
     {
-        System.out.println(palavras.toString());
-        palavras.clear();
+        if (busca.equalsIgnoreCase(""))//checar se foi encontrado
+        {
+            System.out.println("Erro durante busca, palavra nao encontrada.");
+        }
+        else
+        {
+            System.out.println(palavras.toString());
+            palavras.clear();
+        }
+        
     }
-    else if (selecionado == 5)
+    else if (selecionado.equalsIgnoreCase("5"))
     {
         //chama getnode(objeto) para conseguir o conteudo de dentro do objeto, ou adicionar, manipular no geral por meio de nodo palavra.
         System.out.println(palavras.toString());
         palavras.clear();
     }
-    else if (selecionado == 6)
+    else if (selecionado.equalsIgnoreCase("6"))
     {
         break;
+    }
+    else
+    {
+        System.out.println("Erro na seleçao de escolha, tente novamente com uma escolha valida.");
     }
     
 
