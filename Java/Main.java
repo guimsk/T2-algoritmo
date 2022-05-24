@@ -34,6 +34,7 @@ do{
     System.out.println("6. Encerrar o programa.");
 
     String  busca = "";
+    boolean encontrado = false;
     
     int palavraCount = 0;//contagem de palavras
     int StopWordCount = 0;//contagem de palavras StopWord
@@ -110,6 +111,7 @@ do{
                 {
                     if (busca.equalsIgnoreCase(palavra))
                     {
+                        encontrado = true;
                         palavras.add(palavra);
                     }
                          
@@ -145,7 +147,7 @@ do{
     }
     else if (selecionado.equalsIgnoreCase("4"))
     {
-        if (busca.equalsIgnoreCase(""))//checar se foi encontrado
+        if (encontrado == false)//checar se foi encontrado
         {
             System.out.println("Erro durante busca, palavra nao encontrada.");
         }
